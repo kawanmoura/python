@@ -10,9 +10,9 @@
 nome_veiculo = input("Digite o nome do veículo: ")
 preco_veiculo = float(input("Digite o preço do veículo: R$ "))
 
-if preco_veiculo > 80000:
+if preco_veiculo >= 80000:
     desconto = 0.60  # 60% de desconto
-elif preco_veiculo > 50000:
+elif preco_veiculo >= 50000:
     desconto = 0.30  # 30% de desconto
 else:
     desconto = 0  # Sem desconto
