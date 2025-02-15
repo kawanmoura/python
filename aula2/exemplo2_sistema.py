@@ -17,6 +17,7 @@ print("Digite o valor de C: ")
 c = float(input())
 
 delta = b**2 - 4*a*c
+print(f"Delta: {delta}")
 
 if delta < 0:
     print("Não tem raiz real")
