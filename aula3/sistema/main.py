@@ -1,5 +1,5 @@
-
-from .app.controllers.clienteController import clienteController
+from app.controllers.clienteController import clienteController
+from app.controllers.produtoController import produtoController
 
 def exibir_menu():
     print("\n==== MENU ====")
@@ -9,10 +9,9 @@ def exibir_menu():
     print("4 - Listar Produtos")
     print("0 - Sair do Sistema")
 
-    
-
 def main():
     cntrlCliente = clienteController()
+    cntrlProduto = produtoController()
 
     while True:
         exibir_menu()
@@ -34,15 +33,25 @@ def main():
                 # __str__ -> cliente -> Cliente(nome="", email="", idade="")
                 print(f"{index}. {cliente}")
 
-            print("Listar")
         elif opc == "3":
             nome = input("Nome do Produto: ")
             preco = float(input("Preço: "))
             # Salvaríamos no banco de dados
-            print(f"Produto {nome} com preço {preco} cadastrado com sucesso.")
+            cntrlProduto.criar_produto(nome, preco)
+
         elif opc == "4":
-            print("Listar")
+            # Listar do banco de dados os Produtos
+            produtos = cntrlProduto.listar_produtos()
+
+            for index, produto in enumerate(produtos, 1):
+                # index -> Posição atual do produto listado
+                # __str__ -> produto -> Produto(nome="", preco="")
+                print(f"{index}. {produto}")
+
+        elif opc == "0":
+            print("Saindo do sistema...")
             break
+
         else:
             print("Opção inválida. Tente novamente.")
 

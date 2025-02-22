@@ -28,7 +28,7 @@ class BancoFake:
         """ 
         Salvar o conteúdo de self.dados no arquivo JSON
         """
-        with open(self.arquivo_db, 'w', encoding="utf-8") as f:
+        with open(self.arquivo_db, 'w', encoding="utf-8") as data:
             # Realizando DUMP (Python para JSON) para salvar no banco
             json.dump(self.dados, data, ensure_ascii=False, indent=4)
 
@@ -38,3 +38,10 @@ class BancoFake:
 
     def listar_clientes(self):
         return self.dados["clientes"]
+
+    def adicionar_produto(self, produto_dict):
+        self.dados["produtos"].append(produto_dict)
+        self._salvar()
+
+    def listar_produtos(self):
+        return self.dados["produtos"]
