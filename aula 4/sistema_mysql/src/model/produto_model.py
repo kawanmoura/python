@@ -16,7 +16,7 @@ class ProdutoModel:
 
 
         # Faz o cursor trazer o resultado em dicionários
-        self.cursor = self.connection.cursor(ditionary=True)
+        self.cursor = self.connection.cursor(dictionary=True)
 
     def get_all_products(self):
         """ Retomar a lista de produtos """

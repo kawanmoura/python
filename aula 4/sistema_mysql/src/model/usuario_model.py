@@ -5,8 +5,8 @@ class UsuarioModel:
         self.conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="",
-            database="sistema"
+            password="root",
+            database="marea_toca_tudo.usuario"
         )
         self.cursor = self.conn.cursor(dictionary=True)
 
