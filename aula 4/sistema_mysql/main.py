@@ -1,5 +1,5 @@
-
 from src.controller import produto_controller
+
 def exibir_menu():
     print("\nMAREA TOCA TUDO LTDA")
     print("\n==== MENU ====")
@@ -26,4 +26,23 @@ def cadastrar_produto():
     novo_id = produto_controller.cadastrar_produto(nome, preco)
     print(f"Produto cadastrado com sucesso com o novo ID {novo_id}.")
 
+# main -> Inicializar o projeto
+def main():
+    # While True para repetir mesmo que a opção digitado esteja errada
+    while True:
 
+        exibir_menu()
+        opc = input("Escolha uma opção: ")
+
+        if opc == "1":
+            cadastrar_produto()
+        elif opc == "2":
+            listar_produtos
+        elif opc == "6":
+            print("Saindo do sistema...")
+            # sys.exit(0)
+        else:
+            print("Opção Inválida")
+
+if __name__ == '__main__':
+    main()

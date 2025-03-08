@@ -1,5 +1,6 @@
 import mysql.connector
 from config import Config
+
 class ProdutoModel:
 
     def __init__(self):

@@ -1,4 +1,4 @@
-from model.produto_model import ProdutoModel
+from ..model.produto_model import ProdutoModel
 
 def listar_produtos():
     """ Retorna a lista de todos os produtos (dict) """
