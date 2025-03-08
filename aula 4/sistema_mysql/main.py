@@ -10,6 +10,7 @@ def exibir_menu():
     print("5 - Buscar produto unico")
     print("6 - Cadastrar Usuario")
     print("7 - Listar Usuarios")
+    print("8 - Deletar Usuario")
     print("0 - Sair")
 
 def listar_produtos():
@@ -63,8 +64,11 @@ def cadastrar_usuario():
     nome = input("Digite o nome: ")
     idade = input("Digite a idade: ")
     email = input("Digite o email: ")
-    novo_id = usuario_controller.cadastrar_usuario(nome, idade, email)
-    print(f"Usuario cadastrado com sucesso com o novo ID {novo_id}.")
+    resultado = usuario_controller.cadastrar_usuario(nome, idade, email)
+    if isinstance(resultado, int):
+        print(f"Usuario cadastrado com sucesso com o novo ID {resultado}.")
+    else:
+        print(f"Erro ao cadastrar usuario: {resultado}")
 
 def listar_usuarios():
     print("\n--- Lista de Usuarios ---")
@@ -74,6 +78,15 @@ def listar_usuarios():
             print(f"ID: {usuario['id']}, Nome: {usuario['nome']}, Idade: {usuario['idade']}, Email: {usuario['email']}")
     else:
         print("Não existe usuarios cadastrados")
+
+def deletar_usuario():
+    print("\n--- Deletar Usuario ---")
+    user_id = input("Digite o ID do usuario: ")
+    linhas = usuario_controller.deletar_usuario(user_id)
+    if linhas > 0:
+        print("Usuario deletado com sucesso!")
+    else:
+        print("Nenhum usuario foi deletado!")
 
 # main -> Inicializar o projeto
 def main():
@@ -97,6 +110,8 @@ def main():
             cadastrar_usuario()
         elif opc == "7":
             listar_usuarios()
+        elif opc == "8":
+            deletar_usuario()
         elif opc == "0":
             print("Saindo do sistema...")
             break

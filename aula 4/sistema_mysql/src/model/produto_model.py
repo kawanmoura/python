@@ -34,13 +34,13 @@ class ProdutoModel:
     def get_product_by_id(self, product_id):
         """ Busca o produto pelo ID """
         query = "SELECT id, nome, preco FROM produtos WHERE id = %s"
-        self.cursor.execute(query, product_id)
+        self.cursor.execute(query, (product_id,))
         return self.cursor.fetchone()
 
     def delete_product_by_id(self, product_id):
         """ Deletar um produto pelo id """
         query = "DELETE FROM produtos WHERE id = %s"
-        self.cursor.execute(query, product_id)
+        self.cursor.execute(query, (product_id,))
         self.connection.commit()
         return self.cursor.rowcount
     

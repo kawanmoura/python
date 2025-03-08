@@ -10,6 +10,17 @@ def listar_usuarios():
 def cadastrar_usuario(nome, idade, email):
     """ Cadastrar usuario no banco """
     model = UsuarioModel()
-    novo_id = model.insert_user(nome, idade, email)
+    try:
+        novo_id = model.insert_user(nome, idade, email)
+    except ValueError as e:
+        model.close_connection()
+        return str(e)
     model.close_connection()
     return novo_id
+
+def deletar_usuario(user_id):
+    """ Deletar usuario no banco """
+    model = UsuarioModel()
+    linhas = model.delete_user_by_id(user_id)
+    model.close_connection()
+    return linhas
