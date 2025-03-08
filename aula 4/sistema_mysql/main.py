@@ -1,4 +1,4 @@
-from src.controller import produto_controller
+from src.controller import produto_controller, usuario_controller
 
 def exibir_menu():
     print("\nMAREA TOCA TUDO LTDA")
@@ -8,6 +8,8 @@ def exibir_menu():
     print("3 - Atualizar Produto")
     print("4 - Deletar produto")
     print("5 - Buscar produto unico")
+    print("6 - Cadastrar Usuario")
+    print("7 - Listar Usuarios")
     print("0 - Sair")
 
 def listar_produtos():
@@ -26,6 +28,53 @@ def cadastrar_produto():
     novo_id = produto_controller.cadastrar_produto(nome, preco)
     print(f"Produto cadastrado com sucesso com o novo ID {novo_id}.")
 
+def opcao_atualizar():
+    print("\nATUALIZANDO O PRODUTO")
+    produto_id = input("Digite o ID do produto: ")
+    nome = input("Digite o nome do produto: ")
+    preco = input("Digite o preço do produto: ")
+
+    linhas = produto_controller.atualizar_produto(produto_id, nome, preco)
+    if linhas > 0:
+        print("Produto atualizado com sucesso!")
+    else:
+        print("Nenhum produto foi atualizado!")
+
+def deletar_produto():
+    print("\n--- Deletar Produto ---")
+    produto_id = input("Digite o ID do produto: ")
+    linhas = produto_controller.remover_produto(produto_id)
+    if linhas > 0:
+        print("Produto deletado com sucesso!")
+    else:
+        print("Nenhum produto foi deletado!")
+
+def buscar_produto_unico():
+    print("\n--- Buscar Produto Unico ---")
+    produto_id = input("Digite o ID do produto: ")
+    produto = produto_controller.obter_produto(produto_id)
+    if produto:
+        print(f"ID: {produto['id']}, Nome: {produto['nome']}, Preco: {produto['preco']}")
+    else:
+        print("Produto não encontrado")
+
+def cadastrar_usuario():
+    print("\n--- Cadastrar Usuario ---")
+    nome = input("Digite o nome: ")
+    idade = input("Digite a idade: ")
+    email = input("Digite o email: ")
+    novo_id = usuario_controller.cadastrar_usuario(nome, idade, email)
+    print(f"Usuario cadastrado com sucesso com o novo ID {novo_id}.")
+
+def listar_usuarios():
+    print("\n--- Lista de Usuarios ---")
+    usuarios = usuario_controller.listar_usuarios()
+    if usuarios:
+        for usuario in usuarios:
+            print(f"ID: {usuario['id']}, Nome: {usuario['nome']}, Idade: {usuario['idade']}, Email: {usuario['email']}")
+    else:
+        print("Não existe usuarios cadastrados")
+
 # main -> Inicializar o projeto
 def main():
     # While True para repetir mesmo que a opção digitado esteja errada
@@ -37,10 +86,20 @@ def main():
         if opc == "1":
             cadastrar_produto()
         elif opc == "2":
-            listar_produtos
+            listar_produtos()
+        elif opc == "3":
+            opcao_atualizar()
+        elif opc == "4":
+            deletar_produto()
+        elif opc == "5":
+            buscar_produto_unico()
         elif opc == "6":
+            cadastrar_usuario()
+        elif opc == "7":
+            listar_usuarios()
+        elif opc == "0":
             print("Saindo do sistema...")
-            # sys.exit(0)
+            break
         else:
             print("Opção Inválida")
 

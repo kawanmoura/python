@@ -47,7 +47,7 @@ class ProdutoModel:
     def update_product_by_id(self, product_id, nome, preco):
         """ Atualizar um produto pelo id """
         query = "UPDATE produtos SET nome = %s, preco = %s WHERE id = %s"
-        self.cursor.execute(query, nome, preco, product_id)
+        self.cursor.execute(query, (nome, preco, product_id))
         self.connection.commit()
         return self.cursor.rowcount
     
