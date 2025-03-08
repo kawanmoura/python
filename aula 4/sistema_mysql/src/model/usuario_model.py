@@ -34,6 +34,17 @@ class UsuarioModel:
         self.conn.commit()
         return self.cursor.rowcount
 
+    def update_user_by_id(self, user_id, nome, idade, email):
+        sql = "UPDATE usuarios SET nome = %s, idade = %s, email = %s WHERE id = %s"
+        self.cursor.execute(sql, (nome, idade, email, user_id))
+        self.conn.commit()
+        return self.cursor.rowcount
+
+    def get_user_by_id(self, user_id):
+        sql = "SELECT * FROM usuarios WHERE id = %s"
+        self.cursor.execute(sql, (user_id,))
+        return self.cursor.fetchone()
+
     def close_connection(self):
         self.cursor.close()
         self.conn.close()

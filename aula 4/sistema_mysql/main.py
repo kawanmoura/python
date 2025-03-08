@@ -10,7 +10,9 @@ def exibir_menu():
     print("5 - Buscar produto unico")
     print("6 - Cadastrar Usuario")
     print("7 - Listar Usuarios")
-    print("8 - Deletar Usuario")
+    print("8 - Buscar Usuario Unico")
+    print("9 - Atualizar Usuario")
+    print("10 - Deletar Usuario")
     print("0 - Sair")
 
 def listar_produtos():
@@ -79,6 +81,27 @@ def listar_usuarios():
     else:
         print("Não existe usuarios cadastrados")
 
+def atualizar_usuario():
+    print("\n--- Atualizar Usuario ---")
+    user_id = input("Digite o ID do usuario: ")
+    nome = input("Digite o nome: ")
+    idade = input("Digite a idade: ")
+    email = input("Digite o email: ")
+    linhas = usuario_controller.atualizar_usuario(user_id, nome, idade, email)
+    if linhas > 0:
+        print("Usuario atualizado com sucesso!")
+    else:
+        print("Nenhum usuario foi atualizado!")
+
+def buscar_usuario_unico():
+    print("\n--- Buscar Usuario Unico ---")
+    user_id = input("Digite o ID do usuario: ")
+    usuario = usuario_controller.obter_usuario(user_id)
+    if usuario:
+        print(f"ID: {usuario['id']}, Nome: {usuario['nome']}, Idade: {usuario['idade']}, Email: {usuario['email']}")
+    else:
+        print("Usuario não encontrado")
+
 def deletar_usuario():
     print("\n--- Deletar Usuario ---")
     user_id = input("Digite o ID do usuario: ")
@@ -111,6 +134,10 @@ def main():
         elif opc == "7":
             listar_usuarios()
         elif opc == "8":
+            buscar_usuario_unico()
+        elif opc == "9":
+            atualizar_usuario()
+        elif opc == "10":
             deletar_usuario()
         elif opc == "0":
             print("Saindo do sistema...")

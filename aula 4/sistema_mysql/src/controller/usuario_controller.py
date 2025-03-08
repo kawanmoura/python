@@ -24,3 +24,17 @@ def deletar_usuario(user_id):
     linhas = model.delete_user_by_id(user_id)
     model.close_connection()
     return linhas
+
+def atualizar_usuario(user_id, nome, idade, email):
+    """ Atualizar usuario no banco """
+    model = UsuarioModel()
+    linhas = model.update_user_by_id(user_id, nome, idade, email)
+    model.close_connection()
+    return linhas
+
+def obter_usuario(user_id):
+    """ Obter usuario no banco pelo ID """
+    model = UsuarioModel()
+    usuario = model.get_user_by_id(user_id)
+    model.close_connection()
+    return usuario
