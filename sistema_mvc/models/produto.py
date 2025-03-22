@@ -1,0 +1,45 @@
+
+class Produto:
+
+    # POO -> Construtor
+    def __init__(self, id=None, nome=None, preco=None):
+        self.id = id
+        self.nome = nome
+        self.preco = preco
+
+    @staticmethod
+    def listar(myslq):
+        cursor = myslq.connection.cursor()
+        cursor.execute("SELECT id, nome, preco FROM produtos")
+        resultados = cursor.fetchall()
+        cursor.close()
+        return [Produto(id=r[0], nome=id[1], preco=id[2]) for r in resultados]
+    
+    def salvar(self, mysql):
+        cursor = mysql.connection.cursor()
+        cursor.execute("INSERT INTO produtos (nome, preco) VALUES (%s, %s)", (self.nome, self.preco))
+        mysql.connection.commit()
+        cursor.close()
+
+    @staticmethod
+    def buscar_por_id(mysql, id):
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT id, nome, preco FROM produtos WHERE id = %s", (id,))
+        resultado = cursor.fetchone()
+        cursor.close()
+        if resultado:
+            return Produto(id=resultado[0], nome=resultado[1], preco=resultado[2])
+        return None
+    
+    def atualizar(self, mysql):
+        cursor = mysql.connection.cursor()
+        cursor.execute("UPDATE produtos SET nome = %s, preco = %s WHERE id = %s", (self.nome, self.preco, self.id))
+        mysql.connection.commit()
+        cursor.close()
+
+    def deletar(self, mysql):
+        cursor = mysql.connection.cursor()
+        cursor.execute("DELETE FROM produtos WHERE id = %s", (id,))
+        mysql.connection.commit()
+        cursor.close()
+
