@@ -32,11 +32,20 @@ print(df.describe())
 media_cidade = df.groupby("Cidade")["Idade"].mean()
 print(media_cidade)
 
-df.plot(kind="pie", x="Nome", y="Idade", color="blue")
-plt.title("Idade das pessoas")
-plt.xlabel("Nome")
+# df.plot(kind="pie", x="Nome", y="Idade", color="blue")
+# plt.title("Idade das pessoas")
+# plt.xlabel("Nome")
+# plt.ylabel("Idade")
+# plt.show()
+
+df.boxplot(column="Idade", by="Cidade", grid=False)
+plt.title("Distribuição de Idades por Cidade")
+plt.xlabel("Cidade")
 plt.ylabel("Idade")
+
 plt.show()
+
+
 
 
 
