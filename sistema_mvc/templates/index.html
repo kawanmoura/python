@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produto</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../static/index.css">
 </head>
 <body>
     <h1>Lista de Produtos</h1>
@@ -14,12 +14,16 @@
         {% for produto in produtos %}
             <li>
                 {{ produto['nome'] }} - {{ produto['preco'] }}
-                <button class="btn-editar">
-                    <a href="{{ url_for('produto.editar', id=produto['id']) }}">Editar</a>
+                <a class="btn-editar" href="{{ url_for('produto.editar', id=produto['id']) }}">
+                <button >
+                    Editar
                 </button>
-                <button class="btn-deletar">
-                    <a href="{{ url_for('produto.deletar', id=produto['id']) }}">Deletar</a>
+            </a>
+            <a class="btn-deletar" href="{{ url_for('produto.deletar', id=produto['id']) }}">
+                <button>
+                    Deletar
                 </button>
+            </a>
             </li>
         {% endfor %}
     </ul>
