@@ -13,7 +13,7 @@ class Produto:
         cursor.execute("SELECT id, nome, preco FROM produtos")
         resultados = cursor.fetchall()
         cursor.close()
-        return [Produto(id=r[0], nome=id[1], preco=id[2]) for r in resultados]
+        return [Produto(id=r[0], nome=r[1], preco=r[2]) for r in resultados]
     
     def salvar(self, mysql):
         cursor = mysql.connection.cursor()
