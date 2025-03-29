@@ -37,7 +37,7 @@ class Produto:
         mysql.connection.commit()
         cursor.close()
 
-    def deletar(self, mysql):
+    def deletar(mysql, id):
         cursor = mysql.connection.cursor()
         cursor.execute("DELETE FROM produtos WHERE id = %s", (id,))
         mysql.connection.commit()

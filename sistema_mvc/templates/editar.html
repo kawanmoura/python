@@ -1,19 +1,20 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Produto</title>
- </head>
- <body>
+    <link rel="stylesheet" href="../css/editar.css">
+</head>
+<body>
     <h1>Editar Produto</h1>
 
-    <form method="post">
-        Nome: <input type="text" name="nome"> <br>
-        Preço: <input type="number" name="preco"> <br>
+    <form method="post" class="form-editar">
+        Nome: <input value="{{ produto['nome'] }}" type="text" name="nome"/> <br>
+        Preço: <input value="{{ produto['preco'] }}" type="number" name="preco"/> <br>
         <button type="submit">Salvar</button>
     </form>
 
-    <a href="/">Voltar</a>
- </body>
- </html>
+    <a href="/" class="link-voltar">Voltar</a>
+</body>
+</html>

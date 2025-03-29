@@ -1,0 +1,40 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+form {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+form.form-criar {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+input, button, a {
+    color: #ffffff;
+    background-color: #333333;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+a.link-voltar {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+button:hover, a:hover {
+    background-color: #555555;
+}

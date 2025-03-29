@@ -1,0 +1,65 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+a {
+    color: #ffffff;
+    background-color: #333333;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+a.link-novo-produto {
+    color: #ffffff;
+    background-color: #333333;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+a:hover {
+    background-color: #555555;
+}
+
+ul.container {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 5px;
+    list-style-type: none;
+}
+
+ul.container li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border-radius: 3px;
+}
+
+button {
+    color: #ffffff;
+    background-color: #333333;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button.btn-editar, button.btn-deletar {
+    color: #ffffff;
+    background-color: #333333;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555555;
+}
